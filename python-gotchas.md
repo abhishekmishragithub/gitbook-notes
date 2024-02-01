@@ -2,7 +2,7 @@
 description: tiny note on python stuff
 ---
 
-# Python Gotchas
+# 🐍 Python Gotchas
 
 ## \_\_str\_\_ VS \_\_repr\_\_
 
@@ -89,3 +89,23 @@ In Python, both sets and dictionaries (dicts) are implemented as hash tables. Th
 **Sets**: When you add an object to a set, Python uses the `hash()` function to compute a hash value for the object. This hash value is then used to determine where in the set's underlying data structure the object should be stored. When you check if an object is in the set, Python again computes the hash value of the object and looks directly at the corresponding location in the data structure. This makes checking membership in a set very fast, regardless of the size of the set.
 
 **Dictionaries**: Dictionaries work in a similar way, but they use the hash values of keys instead of values. When you store a value in a dictionary with a certain key, Python computes the hash value of the key and uses it to determine where to store the value in the dictionary's underlying data structure. When you look up a value in the dictionary by its key, Python again computes the hash value of the key and looks directly at the corresponding location in the data structure. This makes looking up values in a dictionary by their keys very fast, regardless of the size of the dictionary.
+
+## What sorting algorithm sort() uses in Python
+
+By default, the sort() method in Python uses the Timsort algorithm to sort lists.
+
+Timsort is a hybrid stable sorting algorithm, derived from merge sort and insertion sort, designed to perform well on many kinds of real-world data. It was developed by Tim Peters in 2002 for use in the Python programming language.
+
+Some key properties of Timsort:
+
+* It has best case performance of O(n) for data that is already sorted or partially sorted, same as insertion sort.
+* It has worst case performance of O(n log n) for random data, same as merge sort or quicksort.
+* It is a stable sorting algorithm, meaning it preserves the original order of elements that compare equal.
+* It is adaptive - it detects whether the input is already nearly sorted and falls back to insertion sort for smaller chunks, which performs better for partially sorted data.
+* It is a hybrid merge-insertion sort, combining the efficiency of insertion sort for small chunks with the efficiency of merge sort for larger runs.
+
+So in summary, the default sorting algorithm used by the sort() method in Python is Timsort, which provides good average performance in practice due to its adaptive nature and ability to detect and leverage existing order in the data. It generally strikes a good balance between speed and stability.
+
+
+
+## Wh
