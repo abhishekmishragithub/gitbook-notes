@@ -79,3 +79,13 @@ print(reviews[book3])  # Outputs: "Great book, very enjoyable!"
 ```
 
 In this example, the `__hash__` method of the `Book` class is used to generate a hash value for each book. This hash value is used by the dictionary to quickly locate the value associated with a given key. If the `__hash__` method wasn't defined in the `Book` class, each instance would have a unique hash value, even if their attributes are the same. This would mean that `book1` and `book3` would be considered different keys in the dictionary, even though they represent the same book.
+
+### How set and dictionary uses hash()
+
+In Python, both sets and dictionaries (dicts) are implemented as hash tables. This means they use the `hash()` function to quickly look up values.
+
+**Here's how it works:**
+
+**Sets**: When you add an object to a set, Python uses the `hash()` function to compute a hash value for the object. This hash value is then used to determine where in the set's underlying data structure the object should be stored. When you check if an object is in the set, Python again computes the hash value of the object and looks directly at the corresponding location in the data structure. This makes checking membership in a set very fast, regardless of the size of the set.
+
+**Dictionaries**: Dictionaries work in a similar way, but they use the hash values of keys instead of values. When you store a value in a dictionary with a certain key, Python computes the hash value of the key and uses it to determine where to store the value in the dictionary's underlying data structure. When you look up a value in the dictionary by its key, Python again computes the hash value of the key and looks directly at the corresponding location in the data structure. This makes looking up values in a dictionary by their keys very fast, regardless of the size of the dictionary.
